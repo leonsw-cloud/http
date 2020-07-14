@@ -2,7 +2,9 @@
 
 namespace Leonsw\Http;
 
-class Exception extends \Exception
+use RuntimeException;
+
+class Exception extends RuntimeException
 {
     /**
      * @var int HTTP status code, such as 403, 404, 500, etc.
@@ -19,13 +21,20 @@ class Exception extends \Exception
     public function __construct($status, $message = null, $code = 0, \Exception $previous = null)
     {
         $this->statusCode = $status;
+        if (is_null($message)) {
+            $message = StatusMap::reason($this->statusCode);
+        }
         parent::__construct($message, $code, $previous);
     }
 
+    public function getStatusCode(): int
+    {
+        return $this->statusCode;
+    }
     /**
      * @return string the user-friendly name of this exception
      */
-    public function getName()
+    public function getName(): string
     {
         return StatusMap::reason($this->statusCode);
     }
