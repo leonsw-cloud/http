@@ -2,7 +2,7 @@
 
 namespace Leonsw\Http;
 
-class BadRequestException extends Exception
+class BadRequestException extends HttpException
 {
     /**
      * BadRequestException constructor.

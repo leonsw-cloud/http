@@ -2,7 +2,7 @@
 
 namespace Leonsw\Http;
 
-class RangeNotSatisfiableException extends Exception
+class RangeNotSatisfiableException extends HttpException
 {
     /**
      * RangeNotSatisfiableException constructor.

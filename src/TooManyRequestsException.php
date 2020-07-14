@@ -2,7 +2,7 @@
 
 namespace Leonsw\Http;
 
-class TooManyRequestsException extends Exception
+class TooManyRequestsException extends HttpException
 {
     /**
      * TooManyRequestsException constructor.

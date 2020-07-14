@@ -2,7 +2,7 @@
 
 namespace Leonsw\Http;
 
-class ConflictException extends Exception
+class ConflictException extends HttpException
 {
     /**
      * ConflictException constructor.

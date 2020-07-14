@@ -2,7 +2,7 @@
 
 namespace Leonsw\Http;
 
-class ForbiddenException extends Exception
+class ForbiddenException extends HttpException
 {
     /**
      * ForbiddenException constructor.

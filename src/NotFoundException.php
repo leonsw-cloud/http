@@ -2,7 +2,7 @@
 
 namespace Leonsw\Http;
 
-class NotFoundException extends Exception
+class NotFoundException extends HttpException
 {
     /**
      * NotFoundException constructor.

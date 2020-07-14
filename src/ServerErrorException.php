@@ -2,7 +2,7 @@
 
 namespace Leonsw\Http;
 
-class ServerErrorException extends Exception
+class ServerErrorException extends HttpException
 {
     /**
      * ServerErrorException constructor.

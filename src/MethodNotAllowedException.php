@@ -2,7 +2,7 @@
 
 namespace Leonsw\Http;
 
-class MethodNotAllowedException extends Exception
+class MethodNotAllowedException extends HttpException
 {
     /**
      * MethodNotAllowedException constructor.

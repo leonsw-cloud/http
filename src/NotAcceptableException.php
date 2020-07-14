@@ -2,7 +2,7 @@
 
 namespace Leonsw\Http;
 
-class NotAcceptableException extends Exception
+class NotAcceptableException extends HttpException
 {
     /**
      * NotAcceptableException constructor.

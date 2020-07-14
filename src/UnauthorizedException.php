@@ -2,7 +2,7 @@
 
 namespace Leonsw\Http;
 
-class UnauthorizedException extends Exception
+class UnauthorizedException extends HttpException
 {
     /**
      * UnauthorizedException constructor.

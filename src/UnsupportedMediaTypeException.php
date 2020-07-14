@@ -2,7 +2,7 @@
 
 namespace Leonsw\Http;
 
-class UnsupportedMediaTypeException extends Exception
+class UnsupportedMediaTypeException extends HttpException
 {
     /**
      * UnsupportedMediaTypeException constructor.

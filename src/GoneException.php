@@ -2,7 +2,7 @@
 
 namespace Leonsw\Http;
 
-class GoneException extends Exception
+class GoneException extends HttpException
 {
     /**
      * GoneException constructor.

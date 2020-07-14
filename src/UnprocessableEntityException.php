@@ -2,7 +2,7 @@
 
 namespace Leonsw\Http;
 
-class UnprocessableEntityException extends Exception
+class UnprocessableEntityException extends HttpException
 {
     /**
      * Constructor.
