@@ -14,4 +14,24 @@ class UnprocessableEntityException extends HttpException
     {
         parent::__construct(422, $message, $code, $previous);
     }
+
+    protected $errors;
+
+    public function addError(string $field, string $message)
+    {
+        $this->errors[$field][] = $message;
+        return $this;
+    }
+
+    public function getErrors()
+    {
+        return $this->errors;
+    }
+
+    public static function error(string $field, string $message)
+    {
+        $exception = new static();
+        $exception->addError($field, $message);
+        return $exception;
+    }
 }

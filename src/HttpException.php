@@ -2,9 +2,7 @@
 
 namespace Leonsw\Http;
 
-use RuntimeException;
-
-class HttpException extends RuntimeException
+class HttpException extends \RuntimeException
 {
     /**
      * @var int HTTP status code, such as 403, 404, 500, etc.
