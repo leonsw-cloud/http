@@ -8,7 +8,6 @@
         "http"
     ],
     "homepage": "https://leonsw.com",
-    "license": "MIT",
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {},

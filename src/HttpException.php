@@ -1,11 +1,20 @@
 <?php
 
+declare(strict_types=1);
+/**
+ * This file is part of Leonsw.
+ *
+ * @link     https://leonsw.com
+ * @document https://docs.leonsw.com
+ * @contact  leonsw.com@gmail.com
+ * @license  https://leonsw.com/LICENSE
+ */
 namespace Leonsw\Http;
 
 class HttpException extends \RuntimeException
 {
     /**
-     * @var int HTTP status code, such as 403, 404, 500, etc.
+     * @var int HTTP status code, such as 403, 404, 500, etc
      */
     public $statusCode;
 
@@ -14,7 +23,6 @@ class HttpException extends \RuntimeException
      * @param $status
      * @param null $message
      * @param int $code
-     * @param \Exception|null $previous
      */
     public function __construct($status, $message = null, $code = 0, \Exception $previous = null)
     {
@@ -29,6 +37,7 @@ class HttpException extends \RuntimeException
     {
         return $this->statusCode;
     }
+
     /**
      * @return string the user-friendly name of this exception
      */

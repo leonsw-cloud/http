@@ -1,21 +1,30 @@
 <?php
 
+declare(strict_types=1);
+/**
+ * This file is part of Leonsw.
+ *
+ * @link     https://leonsw.com
+ * @document https://docs.leonsw.com
+ * @contact  leonsw.com@gmail.com
+ * @license  https://leonsw.com/LICENSE
+ */
 namespace Leonsw\Http;
 
 class UnprocessableEntityException extends HttpException
 {
+    protected $errors;
+
     /**
      * Constructor.
      * @param string $message error message
      * @param int $code error code
-     * @param \Exception $previous The previous exception used for the exception chaining.
+     * @param \Exception $previous the previous exception used for the exception chaining
      */
     public function __construct($message = null, $code = 0, \Exception $previous = null)
     {
         parent::__construct(422, $message, $code, $previous);
     }
-
-    protected $errors;
 
     public function addError(string $field, string $message)
     {
