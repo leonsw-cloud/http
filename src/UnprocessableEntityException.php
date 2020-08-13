@@ -32,15 +32,27 @@ class UnprocessableEntityException extends HttpException
         return $this;
     }
 
+    public static function error(string $field, string $message)
+    {
+        $exception = new static();
+        $exception->addError($field, $message);
+        return $exception;
+    }
+
+    public function setErrors(array  $errors)
+    {
+        $this->errors = $errors;
+    }
+
     public function getErrors()
     {
         return $this->errors;
     }
 
-    public static function error(string $field, string $message)
+    public static function errors(array $errors)
     {
         $exception = new static();
-        $exception->addError($field, $message);
+        $exception->setErrors($errors);
         return $exception;
     }
 }
