@@ -39,7 +39,7 @@ class UnprocessableEntityException extends HttpException
         return $exception;
     }
 
-    public function setErrors(array  $errors)
+    public function setErrors(array $errors)
     {
         $this->errors = $errors;
     }
