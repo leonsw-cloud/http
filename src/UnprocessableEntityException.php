@@ -49,6 +49,13 @@ class UnprocessableEntityException extends HttpException
         return $this->errors;
     }
 
+    public function getLastError()
+    {
+        foreach ($this->errors as $field => $errors) {
+            return array_pop($errors);
+        }
+    }
+
     public static function errors(array $errors)
     {
         $exception = new static();
