@@ -13,12 +13,7 @@ namespace Leonsw\Http;
 
 class NotAcceptableException extends HttpException
 {
-    /**
-     * NotAcceptableException constructor.
-     * @param null $message
-     * @param int $code
-     */
-    public function __construct($message = null, $code = 0, \Exception $previous = null)
+    public function __construct($message = null, $code = 0, \Throwable $previous = null)
     {
         parent::__construct(406, $message, $code, $previous);
     }

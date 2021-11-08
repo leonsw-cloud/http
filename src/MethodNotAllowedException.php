@@ -13,12 +13,7 @@ namespace Leonsw\Http;
 
 class MethodNotAllowedException extends HttpException
 {
-    /**
-     * MethodNotAllowedException constructor.
-     * @param null $message
-     * @param int $code
-     */
-    public function __construct($message = null, $code = 0, \Exception $previous = null)
+    public function __construct($message = null, $code = 0, \Throwable $previous = null)
     {
         parent::__construct(405, $message, $code, $previous);
     }

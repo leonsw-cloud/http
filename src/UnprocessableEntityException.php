@@ -15,13 +15,7 @@ class UnprocessableEntityException extends HttpException
 {
     protected $errors;
 
-    /**
-     * Constructor.
-     * @param string $message error message
-     * @param int $code error code
-     * @param \Exception $previous the previous exception used for the exception chaining
-     */
-    public function __construct($message = null, $code = 0, \Exception $previous = null)
+    public function __construct($message = null, $code = 0, \Throwable $previous = null)
     {
         parent::__construct(422, $message, $code, $previous);
     }
@@ -30,13 +24,6 @@ class UnprocessableEntityException extends HttpException
     {
         $this->errors[$field][] = $message;
         return $this;
-    }
-
-    public static function error(string $field, string $message)
-    {
-        $exception = new static();
-        $exception->addError($field, $message);
-        return $exception;
     }
 
     public function setErrors(array $errors)
@@ -49,11 +36,50 @@ class UnprocessableEntityException extends HttpException
         return $this->errors;
     }
 
+    public function getKeyErrors(string $key)
+    {
+        return $this->errors[$key] ?? [];
+    }
+
+    public function getFirstKey()
+    {
+        foreach ($this->errors as $key => $errors) {
+            $error = array_shift($errors);
+            break;
+        }
+        return $key;
+    }
+
+    public function getFirstError()
+    {
+        foreach ($this->errors as $key => $errors) {
+            $error = array_shift($errors);
+            break;
+        }
+        return $error;
+    }
+
+    public function getLastKey()
+    {
+        foreach ($this->errors as $key => $errors) {
+            $error = array_pop($errors);
+        }
+        return $key;
+    }
+
     public function getLastError()
     {
-        foreach ($this->errors as $field => $errors) {
-            return array_pop($errors);
+        foreach ($this->errors as $key => $errors) {
+            $error = array_pop($errors);
         }
+        return $error;
+    }
+
+    public static function error(string $key, string $message)
+    {
+        $exception = new static();
+        $exception->addError($key, $message);
+        return $exception;
     }
 
     public static function errors(array $errors)
