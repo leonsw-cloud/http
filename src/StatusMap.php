@@ -83,11 +83,35 @@ class StatusMap
         511 => 'Network Authentication Required',
     ];
 
-    public static function reason(int $statusCode)
+    const EXCEPTION_MAP = [
+        400 => BadRequestException::class,
+        401 => UnauthorizedException::class,
+        403 => ForbiddenException::class,
+        404 => NotFoundException::class,
+        405 => MethodNotAllowedException::class,
+        406 => NotAcceptableException::class,
+        409 => ConflictException::class,
+        410 => GoneException::class,
+        415 => UnsupportedMediaTypeException::class,
+        416 => RangeNotSatisfiableException::class,
+        422 => UnprocessableEntityException::class,
+        429 => TooManyRequestsException::class,
+        500 => ServerErrorException::class,
+    ];
+
+    public static function reason(int $statusCode): string
     {
         if (isset(self::MAP[$statusCode])) {
             return self::MAP[$statusCode];
         }
         return 'Error';
+    }
+
+    public static function exception(int $statusCode): string
+    {
+        if (isset(self::EXCEPTION_MAP[$statusCode])) {
+            return self::EXCEPTION_MAP[$statusCode];
+        }
+        return UnknownStatusCodeException::class;
     }
 }
